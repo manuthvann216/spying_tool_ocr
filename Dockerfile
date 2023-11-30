@@ -4,12 +4,14 @@ ENV FLASK_APP=src.app.py \
     FLASK_ENV=development \
     FLASK_DEBUG=1
 
-WORKDIR /simple_ocr
+WORKDIR /Tabular/opt/app/
 
 COPY requirements.txt requirements.txt
-COPY . /simple_ocr
+COPY . /Tabular/opt/app/
 
-RUN pip install --no-cache-dir --no-deps -r requirements.txt && \
+RUN pip3 install --no-cache-dir --no-deps -r requirements.txt && \
     rm -rf /root/.cache
 
-CMD ["flask", "run", "--host=0.0.0.0", "--port=8010"]
+EXPOSE 8010 
+
+# CMD ["flask", "run", "--host=0.0.0.0", "--port=8010"]
